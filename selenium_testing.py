@@ -1,8 +1,17 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
-driver = webdriver.Chrome("C:\\Selenium\\Chrome\\chromedriver.exe")
-driver.set_page_load_timeout(30)
-driver.get("http://www.google.com")
-driver.maximise_window()
+def searchSite(webdriver, searchterm):
+    driver.get("http://www.python.org")
+    elem = driver.find_element_by_name("q") #finds searchbar
+    elem.clear()
+    elem.send_keys(searchterm)
+    elem.send_keys(Keys.RETURN)
 
-print("hello")
+driver = webdriver.Chrome("C:\\Users\\Kyle\\Desktop\\chromedriver_win32\\chromedriver")
+driver.get("http://www.python.org")
+assert "Python" in driver.title
+searchSite(driver, "test")
+assert "No results found." not in driver.page_source
+print (driver.current_url)
+#driver.close()
