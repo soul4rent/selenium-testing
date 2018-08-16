@@ -13,5 +13,6 @@ driver.get("http://www.python.org")
 assert "Python" in driver.title
 searchSite(driver, "test")
 assert "No results found." not in driver.page_source
+assert "test" in driver.page_source
 print (driver.current_url)
-#driver.close()
+driver.close()
