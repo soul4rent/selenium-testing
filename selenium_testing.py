@@ -8,7 +8,7 @@ def searchSite(webdriver, searchterm):
     elem.send_keys(searchterm)
     elem.send_keys(Keys.RETURN)
 
-driverPath = "C:\\Users\\Kyle\\SelfProgrammingProjects\\selenium-experimentation\\chromedriver_win32\\chromedriver.exe"
+driverPath = "chromedriver_win32\\chromedriver.exe"
 
 driver = webdriver.Chrome(driverPath)
 driver.get("http://www.python.org")
