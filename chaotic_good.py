@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 import time
 import os
+import random
 
 driverPath = "chromedriver_win32\\chromedriver.exe"
 options = Options()  
@@ -13,15 +14,19 @@ options.add_argument("--headless")
 
 rice_grains = 0
 
-#driver = webdriver.Chrome(driverPath)
+
 while True:
-    driver = webdriver.Chrome(driverPath, options=options)
+
+    driver = webdriver.Chrome(driverPath)
+    #driver = webdriver.Chrome(driverPath, options=options)
     driver.get("http://freerice.com/")
     try:
         while "rice_blocked" not in driver.page_source:
             xpath = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, "//a[@rel='0']"))
+                EC.presence_of_element_located((By.XPATH, f"//a[@rel={random.randint(0,3)}]"))
             )
+
+            src = driver.page_source
             xpath.click()
 
             #wait until question answered
@@ -34,7 +39,13 @@ while True:
                 print(f"Success! Rice Grains Donated: {rice_grains}")
             else:
                 print("Guess and check failed!")
-            time.sleep(1)
+
+            #wait until page finished updating
+            while True:
+                if driver.page_source != src:
+                    break
+
+            time.sleep(.5)
     except:
         print("FAILURE. RESTARTING:")
     driver.quit()
