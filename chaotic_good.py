@@ -17,8 +17,8 @@ rice_grains = 0
 
 while True:
 
-    driver = webdriver.Chrome(driverPath)
-    #driver = webdriver.Chrome(driverPath, options=options)
+    #driver = webdriver.Chrome(driverPath)
+    driver = webdriver.Chrome(driverPath, options=options)
     driver.get("http://freerice.com/")
     try:
         while "rice_blocked" not in driver.page_source:
