@@ -11,6 +11,9 @@ class CommonMethods:
             print("not loaded")
             
         print("Web Page Loaded")
+
+    def waitUntilElementExists(driver, webElement):
+        print("Method Ready to be used for logic)
         
         
 
