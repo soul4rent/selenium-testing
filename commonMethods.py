@@ -18,7 +18,8 @@ class CommonMethods:
     def waitUntilElementExistsXPath(driver, webElement, timeout):
         return WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.XPATH, webElement)))
     
-        
+    def deleteAllButNamedCookie(driver, cookie):
+        print("cookie deleted")
 
 
 driverPath = "chromedriver_win32\\chromedriver.exe"
